@@ -7,10 +7,11 @@
   "exports": {
     ".": {
       "import": "./dist/human-regex.esm.js",
-      "require": "./dist/human-regex.cjs.js"
+      "require": "./dist/human-regex.cjs.js",
+      "types": "./index.d.ts"
     }
   },
-  "types": "types/index.d.ts",
+  "types": "./index.d.ts",
   "type": "module",
   "scripts": {
     "test": "jest --coverage",
