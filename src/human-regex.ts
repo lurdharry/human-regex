@@ -106,6 +106,10 @@ class HumanRegex {
     return this.add(".");
   }
 
+  newline(): Base {
+    return this.add("(\\r\\n|\\r|\\n)"); // Windows: \r\n, Unix: \n, Old Macs: \r
+  }
+
   negativeLookahead(pattern: string): Base {
     return this.add(`(?!${pattern})`);
   }

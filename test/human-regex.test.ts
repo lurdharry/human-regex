@@ -544,3 +544,11 @@ test("throws error when no pattern is available to repeat", () => {
   // @ts-expect-error: Cannot call .repeat(3) on an empty pattern.
   expect(() => createRegex().repeat(3)).toThrow("No pattern to repeat");
 });
+
+test("expect newline(s) to be detected properly", () => {
+  const regex = createRegex().newline().toRegExp();
+  expect(regex.test("\n")).toBe(true);
+  expect(regex.test(`first line
+second line`)).toBe(true);
+  expect(regex.test("test")).toBe(false);
+});

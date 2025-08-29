@@ -93,6 +93,7 @@ Creates a new regex builder instance.
 | `.anyCharacter()`    | Adds a pattern for any character (`.`).         | `.`            |
 | `.literal("text")`   | Adds a literal text pattern.                    | `["text"]`     |
 | `.or()`              | Adds an OR pattern.                             | `\|`           |
+| `.newline()`         | Adds a pattern for newline characters.          | `(\r\n\|\r\|\n)` |
 | `.range("digit")`    | Adds a range pattern for digits (`0-9`).        | `[0-9]`        |
 | `.notRange("aeiou")` | Excludes characters from the pattern.           | `[^aeiou]`     |
 
