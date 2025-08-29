@@ -186,6 +186,13 @@ test("range method works correctly", () => {
   expect(letterRegex.test("5")).toBe(false);
 });
 
+test("range and notRange methods only handle known range presets", () => {
+  // @ts-expect-error: "somerange" not in RangeKeys
+  expect(() => createRegex().range("somerange")).toThrow("Unknown range: somerange")
+// @ts-expect-error: "somerange" not in RangeKeys
+  expect(() => createRegex().notRange("somerange")).toThrow("Unknown range: somerange")
+})
+
 test("notRange method works correctly", () => {
   const regex = createRegex().notRange("digit").toRegExp();
   expect(regex.test("5")).toBe(false);
