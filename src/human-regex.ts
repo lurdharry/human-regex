@@ -88,7 +88,17 @@ class HumanRegex {
     return this.add(`[${range}]`);
   }
 
-  notRange(chars: string): Base {
+  notRange(name: RangeKeys): Base {
+    const range = Ranges[name];
+    if (!range) throw new Error(`Unknown range: ${name}`);
+    return this.add(`[^${range}]`);
+  }
+
+  anyOf(chars: string): Base {
+    return this.add(`[${chars}]`);
+  }
+
+  notAnyOf(chars: string): Base {
     return this.add(`[^${chars}]`);
   }
 
