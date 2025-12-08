@@ -4,7 +4,14 @@
   "description": "Human-friendly regex builder with English-like syntax",
   "main": "dist/human-regex.cjs.js",
   "module": "dist/human-regex.esm.js",
-  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/human-regex.esm.js",
+      "require": "./dist/human-regex.cjs.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "types": "./index.d.ts",
   "type": "module",
   "scripts": {
     "test": "jest --coverage",
