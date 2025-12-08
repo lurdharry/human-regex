@@ -33,6 +33,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.0] - 2025-12-08
+
+### Added
+
+- `anyOf` method to match any of the provided characters.
+- `newline` method to match a newline character.
+
+### Fixed
+
+- Dual module support for CommonJS and ES Modules.
+
+### Contributors
+- Thomas Lamant (@tmlmt)
+
+---
+
 ## [1.0.0] - 2025-01-31
 
 ### Initial Release
