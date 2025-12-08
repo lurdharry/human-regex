@@ -95,7 +95,11 @@ Creates a new regex builder instance.
 | `.or()`              | Adds an OR pattern.                             | `\|`           |
 | `.newline()`         | Adds a pattern for newline characters.          | `(\r\n\|\r\|\n)` |
 | `.range("digit")`    | Adds a range pattern for digits (`0-9`).        | `[0-9]`        |
-| `.notRange("aeiou")` | Excludes characters from the pattern.           | `[^aeiou]`     |
+| `.notRange("letter")` | Adds a range pattern for non-letters           | `[^a-zA-Z]`     |
+| `.anyOf("aeiou\\s")`    | Adds list of accepted characters          | `[aeiou\s]`     |
+| `.notAnyOf("aeiou\\s")` | Adds list of excluded characters          | `[^aeiou\s]`     |
+
+
 
 ### Quantifiers
 
@@ -165,6 +169,26 @@ Creates a new regex builder instance.
 - `Patterns.email`: Predefined email pattern.
 - `Patterns.url`: Predefined URL pattern.
 - `Patterns.phoneInternational`: Predefined international phone number pattern.
+
+### Predefined Ranges
+
+For use with `range()` and `notRange()`:
+
+  digit: "0-9",
+  lowercaseLetter: "a-z",
+  uppercaseLetter: "A-Z",
+  letter: "a-zA-Z",
+  alphanumeric: "a-zA-Z0-9",
+  anyCharacter: ".",
+
+| RangeKey                  | Range value    |
+| ------------------------ | --------------- | 
+| `digit`                  | `0-9`           | 
+| `lowercaseLetter`        | `a-z`           | 
+| `uppercaseLetter`        | `A-Z`           |
+| `letter`                 | `a-zA-Z`        | 
+| `alphanumeric`           | `a-zA-Z0-9`     | 
+| `anyCharacter`           | `.`             | 
 
 ## Examples
 

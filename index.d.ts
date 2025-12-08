@@ -63,7 +63,9 @@ export class HumanRegex {
   or(): AfterAnchor;
 
   range(name: RangeKeys): Base;
-  notRange(chars: string): Base;
+  notRange(name: RangeKeys): Base;
+  anyOf(chars: string): Base;
+  notAnyOf(chars: string): Base;
   lazy(): Base;
   letter(): Base;
   anyCharacter(): Base;

@@ -186,6 +186,24 @@ test("range method works correctly", () => {
   expect(letterRegex.test("5")).toBe(false);
 });
 
+test("range and notRange methods only handle known range presets", () => {
+  // @ts-expect-error: "somerange" not in RangeKeys
+  expect(() => createRegex().range("somerange")).toThrow("Unknown range: somerange")
+// @ts-expect-error: "somerange" not in RangeKeys
+  expect(() => createRegex().notRange("somerange")).toThrow("Unknown range: somerange")
+})
+
+test("notRange method works correctly", () => {
+  const regex = createRegex().notRange("digit").toRegExp();
+  expect(regex.test("5")).toBe(false);
+  expect(regex.test("a")).toBe(true);
+
+  const letterRegex = createRegex().notRange("letter").toRegExp();
+  expect(letterRegex.test("a")).toBe(false);
+  expect(letterRegex.test("Z")).toBe(false);
+  expect(letterRegex.test("5")).toBe(true);
+});
+
 test("or method works correctly", () => {
   const regex = createRegex().literal("cat").or().literal("dog").toRegExp();
   expect(regex.test("cat")).toBe(true);
@@ -340,10 +358,18 @@ test("wordBoundary works correctly", () => {
   expect(regex.test("atest")).toBe(false);
 });
 
-test("notRange excludes specified characters", () => {
-  const regex = createRegex().notRange("aeiou").toRegExp();
+test("anyOf detects specified characters", () => {
+  const regex = createRegex().anyOf("aeiou\\s").toRegExp();
+  expect(regex.test("b")).toBe(false);
+  expect(regex.test("a")).toBe(true);
+  expect(regex.test(" ")).toBe(true);
+});
+
+test("notAnyOf excludes specified characters", () => {
+  const regex = createRegex().notAnyOf("aeiou\\s").toRegExp();
   expect(regex.test("b")).toBe(true);
   expect(regex.test("a")).toBe(false);
+  expect(regex.test(" ")).toBe(false);
 });
 
 test("zeroOrMore works correctly", () => {
