@@ -67,6 +67,7 @@ export class HumanRegex {
   lazy(): Base;
   letter(): Base;
   anyCharacter(): Base;
+  newline(): Base;
 
   // Lookahead/behind
   negativeLookahead(pattern: string): Base;
