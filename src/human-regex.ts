@@ -78,6 +78,23 @@ class HumanRegex {
     return this.add(escapeLiteral(text));
   }
 
+  regex(input: RegExp | string): Base {
+    if (input instanceof RegExp) {
+      for (const flag of input.flags) this.flags.add(flag);
+      return this.add(input.source);
+    }
+
+    try {
+      new RegExp(input);
+    } catch {
+      throw new Error(
+        `Invalid regex pattern passed to .regex(): "${input}". ` +
+          `If you meant to match this text literally, use .literal() instead.`
+      );
+    }
+    return this.add(input);
+  }
+
   or(): AfterAnchor {
     return this.add("|");
   }
