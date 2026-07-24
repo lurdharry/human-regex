@@ -282,7 +282,7 @@ class HumanRegex {
     }
 
     const lastPart = this.parts.pop();
-    this.parts.push(`(${lastPart}){${count}}`);
+    this.parts.push(`(?:${lastPart}){${count}}`);
     return this;
   }
 
