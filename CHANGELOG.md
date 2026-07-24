@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-<!-- TEMPLATE: copy the sections below into a new entry and replace the bracketed placeholders. -->
-
 ### Added
 
 - [Brief description of new features]
@@ -33,8 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Security-related updates]
 
-<!-- Current update -->
-
 ### Added
 
 - `regex(input)` method to splice an existing `RegExp` or pattern string into the
@@ -46,6 +42,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implemented the previously-documented `.regex()` method, which was referenced in
   the README, advanced usage, and FAQ but never existed and threw
   `TypeError: createRegex(...).regex is not a function` at runtime.
+- `.repeat(count)` now wraps the repeated pattern in a non-capturing group
+  (`(?:...)`) instead of a capturing one, so it no longer shifts the numbering of
+  the user's own capture groups.
 
 ### Contributors
 
@@ -65,6 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dual module support for CommonJS and ES Modules.
 
 ### Contributors
+
 - Thomas Lamant (@tmlmt)
 
 ---
