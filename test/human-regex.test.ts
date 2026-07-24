@@ -616,3 +616,21 @@ test("regex method allows ordinary text that is a valid pattern", () => {
   const regex = createRegex().regex("hello").toRegExp();
   expect(regex.test("hello")).toBe(true);
 });
+
+test("repeat uses a non-capturing group so it does not shift capture indices", () => {
+  const regex = createRegex()
+    .digit()
+    .repeat(2)
+    .startCaptureGroup()
+    .letter()
+    .oneOrMore()
+    .endGroup()
+    .toRegExp();
+
+  // repeat must not create its own capture group
+  expect(regex.source).toBe("(?:\\d){2}([a-zA-Z]+)");
+
+  // the user's group stays at index 1
+  const match = "12ab".match(regex);
+  expect(match?.[1]).toBe("ab");
+});
