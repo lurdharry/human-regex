@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+<!-- TEMPLATE: copy the sections below into a new entry and replace the bracketed placeholders. -->
+
 ### Added
 
 - [Brief description of new features]
@@ -30,6 +32,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 - [Security-related updates]
+
+<!-- Current update -->
+
+### Added
+
+- `regex(input)` method to splice an existing `RegExp` or pattern string into the
+  chain. Flags from a passed `RegExp` are merged, and an invalid pattern string
+  throws a descriptive error pointing to `.literal()`.
+
+### Fixed
+
+- Implemented the previously-documented `.regex()` method, which was referenced in
+  the README, advanced usage, and FAQ but never existed and threw
+  `TypeError: createRegex(...).regex is not a function` at runtime.
+
+### Contributors
+
+- Hammed Abdulazeez (@lurdharry)
 
 ---
 
